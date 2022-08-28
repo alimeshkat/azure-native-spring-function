@@ -73,6 +73,8 @@ The `AZURE_CREDENTIALS` will allow the GitHub Actions workflow to log in your Az
 
 This is a JSON payload that we will get by executing the following command:
 
+When run in git bash set `MSYS_NO_PATHCONV=1` to avoid auto-translation of the resource id - [Auto-translation of Resource IDs](https://github.com/Azure/azure-cli/blob/dev/doc/use_cli_with_git_bash.md#auto-translation-of-resource-ids)
+
 ```bash
 RESOURCE_ID=$(az group show --name $TF_VAR_AZ_RESOURCE_GROUP --query id -o tsv)
 SPNAME="sp-$(az functionapp list --resource-group $TF_VAR_AZ_RESOURCE_GROUP  --query '[].name' -o tsv)"
